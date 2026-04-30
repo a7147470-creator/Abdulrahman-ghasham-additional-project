@@ -3,143 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نور الصلاة - دليل المسلم</title>
+    <title>موسوعة السيرة والتاريخ الإسلامي | الإصدار العملاق</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* إعدادات الخلفية الغامقة والألوان الأساسية */
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: #121212; /* خلفية سوداء مريحة للعين */
-            color: #e0e0e0; /* لون نص فاتح */
-            margin: 0;
-            padding: 0;
+        :root { --gold: #c9a050; --green: #2ecc71; --bg: #0b0f14; --card-bg: #161b22; }
+        body { 
+            margin: 0; 
+            font-family: 'Cairo', sans-serif; 
+            background: var(--bg); 
+            color: #eee; 
+            line-height: 2.1;
         }
 
         header {
-            background: linear-gradient(135deg, #1e2a38 0%, #27ae60 100%);
-            color: white;
-            padding: 60px 20px;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            padding: 100px 20px;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 5px solid var(--gold);
         }
 
-        .container {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 20px;
-        }
+        h1 { font-family: 'Amiri', serif; color: var(--gold); font-size: 4rem; margin: 0; }
+        .counter { text-align: center; font-size: 32px; color: var(--green); margin: 30px; font-weight: bold; text-shadow: 0 0 10px rgba(46,204,113,0.3); }
 
-        /* تنسيق البطاقات (Sections) */
+        .container { width: 90%; max-width: 1200px; margin: auto; }
+
         .card {
-            background-color: #1e1e1e; /* لون كرت رمادي غامق */
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 30px;
-            border: 1px solid #333;
-            transition: transform 0.3s ease;
+            background: var(--card-bg);
+            margin: 40px 0;
+            padding: 45px;
+            border-radius: 25px;
+            border: 1px solid #30363d;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .card:hover {
-            transform: translateY(-5px); /* تأثير حركة خفيف عند التمرير */
-            border-color: #27ae60;
+        .card h2 {
+            color: var(--gold);
+            font-family: 'Amiri', serif;
+            font-size: 3.2rem;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 15px;
+            margin-top: 0;
         }
 
-        h2 {
-            color: #2ecc71;
-            border-right: 4px solid #2ecc71;
-            padding-right: 15px;
-        }
+        .card h3 { color: var(--green); font-size: 1.8rem; margin-top: 30px; }
 
-        .post-image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover; /* لضمان عدم تمدد الصورة */
-            border-radius: 12px;
-            margin: 20px 0;
-        }
+        .card p { font-size: 1.2rem; color: #b1b5bc; text-align: justify; }
 
-        /* تنسيق الأزرار التفاعلية */
         .info-box {
-            background: #2c3e50;
-            padding: 15px;
-            border-radius: 10px;
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 20px;
+            background: #0d1117;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-right: 5px solid var(--green);
         }
 
-        .stat {
-            text-align: center;
-            padding: 10px;
+        img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 25px 0;
+            border: 2px solid #333;
         }
 
-        .stat h4 { margin: 0; color: #2ecc71; font-size: 1.5rem; }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            background-color: #000;
-            font-size: 0.9rem;
-            color: #777;
-        }
+        footer { background: #000; padding: 50px; text-align: center; color: #666; border-top: 2px solid var(--gold); }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-    <header>
-        <h1>نور الصلاة</h1>
-        <p>قال رسول الله صلى الله عليه وسلم: "وجُعلت قرة عيني في الصلاة"</p>
-    </header>
+<header>
+    <h1>📜 موسوعة السيرة والتاريخ الإسلامي</h1>
+    <p style="font-size: 1.5rem;">توثيق شامل ومعلومات دسمة عن فجر الإسلام</p>
+</header>
 
-    <div class="container">
+<div class="counter">
+    عدد المسلمين التقديري الآن: <span id="count">2,015,340,120</span>
+</div>
 
-        <div class="card">
-            <h2>لماذا نصلي؟</h2>
-            <p>الصلاة هي عماد الدين، وهي أول ما يُسأل عنه العبد يوم القيامة. هي وقت مستقطع من ضجيج الحياة لتقف بين يدي الخالق.</p>
-            <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1000" class="post-image" alt="صورة مسجد">
-        </div>
+<div class="container">
 
-        <div class="info-box">
-            <div class="stat">
-                <h4>5</h4>
-                <span>صلوات مفروضة</span>
-            </div>
-            <div class="stat">
-                <h4>17</h4>
-                <span>ركعة في اليوم</span>
-            </div>
-            <div class="stat">
-                <h4>∞</h4>
-                <span>راحة وطمأنينة</span>
-            </div>
-        </div>
+    <div class="card">
+        <h2>السيرة النبوية ﷺ (التفاصيل الكاملة)</h2>
+        <p>
+            وُلد سيد الخلق محمد ﷺ في مكة المكرمة في الثاني عشر من ربيع الأول من عام الفيل. نشأ يتيماً، حيث توفي والده عبد الله وهو جنين، وتوفيت أمه آمنة وهو في السادسة. كفله جده عبد المطلب الذي كان يحبه حباً جماً، ثم انتقلت كفالته لعمه أبي طالب الذي حماه طوال حياته رغم عدم إسلامه.
+        </p>
+        
+        
 
-        <div class="card">
-            <h2>السنن الرواتب</h2>
-            <p>للحفاظ على الفريضة، شرع الله لنا سنناً تجبر النقص وتزيد في الأجر:</p>
-            <ul style="color: #bbb;">
-                <li>ركعتان قبل الفجر.</li>
-                <li>أربع ركعات قبل الظهر وركعتان بعدها.</li>
-                <li>ركعتان بعد المغرب.</li>
-                <li>ركعتان بعد العشاء.</li>
-            </ul>
-            <img src="https://images.unsplash.com/photo-1584551270911-6556111ac94a?q=80&w=1000" class="post-image" alt="صورة مسبحة ومصحف">
-        </div>
-
-        <div class="card" style="background-color: #1a2a20;">
-            <h2>كيف تخشع في صلاتك؟</h2>
-            <p>1. بادر بالوضوء قبل الأذان.<br>
-               2. اترك هاتفك بعيداً عنك.<br>
-               3. تدبر معاني الآيات التي تقرؤها.<br>
-               4. اطمئن في الركوع والسجود.</p>
-        </div>
-
+        <h3>المعاناة وبداية الدعوة</h3>
+        <p>
+            بعد نزول الوحي في **غار حراء**، بدأت مرحلة الدعوة السرية لمدة 3 سنوات، ثم الجهرية. واجه المسلمون الأوائل أشد أنواع العذاب؛ فكان بلال يُطرح على الرمال الملتهبة، واستشهدت سمية أم عمار بن ياسر كأول شهيدة في الإسلام.
+            <br><br>
+            <img src="https://i.pinimg.com/736x/4b/70/9c/4b709c741a62dfc59a2cfa09ed147679.jpg" alt="غار حراء">
+            من أصعب اللحظات كانت **حصار شعب أبي طالب**، حيث قاطعت قريش بني هاشم والمسلمين مقاطعة شاملة، فلا بيع ولا شراء ولا زواج، حتى اضطر المسلمون لأكل أوراق الشجر وجلود الحيوانات من الجوع لمدة 3 سنوات كاملة، ومع ذلك لم يتخلوا عن دينهم.
+        </p>
     </div>
 
-    <footer>
-        <p>حقوق النشر © 2026 - مشروع عبد الرحمن البرمجي</p>
-    </footer>
+    <div class="card">
+        <h2>التشريعات الإسلامية الكبرى</h2>
+        
+        <div class="info-box">
+            <h3>رحلة الإسراء والمعراج وفرض الصلاة</h3>
+            <p>بعد "عام الحزن" الذي فقد فيه النبي ﷺ زوجته خديجة وعمه أبا طالب، أكرمه الله بالإسراء من مكة للقدس، ثم العروج للسماوات. هناك فُرضت الصلاة مباشرة من الله؛ بدأت بـ 50 صلاة، وبقي النبي يسأل ربه التخفيف حتى أصبحت 5 صلوات في العمل و50 في الأجر.</p>
+        </div>
+
+        <img src="https://i.pinimg.com/736x/74/6b/d2/746bd28d0717e5942e5485f312b6416c.jpg" alt="الكعبة المشرفة">
+
+        <h3>قصة الأذان وتحريم الخمر</h3>
+        <img src="https://i.pinimg.com/1200x/17/5d/dc/175ddc71ea90c374c5bf479ea3f90e53.jpg" alt="صحراء تاريخية">
+        <p>
+            **الأذان:** بعد الهجرة، تشاور المسلمون في وسيلة لجمع الناس للصلاة. رأى الصحابي عبد الله بن زيد رؤيا بكلمات الأذان، وأقره النبي ﷺ وأمر بلال بن رباح أن يؤذن بها لجمال صوته.
+            <br><br>
+            **تحريم الخمر:** تم التشريع بحكمة إلهية عبر 3 مراحل؛ بدأت ببيان أن إثمها أكبر من نفعها، ثم النهي عن الصلاة في حالة السكر، وأخيراً التحريم القاطع والنهائي لضررها على العقل والمجتمع.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>الغزوات والحروب الفاصلة</h2>
+        
+        <div class="info-box">
+            <h3>غزوة بدر الكبرى (2 هـ)</h3>
+            <p>يسمى "يوم الفرقان". كان المسلمون 313 رجلاً فقط، والمشركون 1000 مقاتل. أيد الله المسلمين بالملائكة، وانتهت بنصر ساحق قتل فيه رؤوس الكفر مثل أبو جهل. استشهد من المسلمين 14 فقط، وقتل من المشركين 70 وأسر 70.</p>
+        </div>
+
+        <img src="https://i.pinimg.com/736x/af/24/77/af2477e3b4271373c25c47c4fe7f179c.jpg" alt="صحراء تاريخية">
+
+        <h3>غزوة أحد والخندق</h3>
+         <img src="https://i.pinimg.com/736x/71/9b/97/719b97ac27ecb2dd3e0ae7b4a65e6928.jpg" alt="صحراء تاريخية">
+        <p>
+            **أحد:** كانت اختباراً للثبات. خسر المسلمون النصر الأولي بسبب مخالفة الرماة لأوامر النبي ونزولهم من الجبل لجمع الغنائم، مما أدى لاستشهاد 70 صحابياً منهم حمزة بن عبد المطلب.
+            <br><br>
+            **الخندق:** تحالف 10 آلاف مقاتل من الأحزاب لحصار المدينة. أشار سلمان الفارسي بحفر الخندق، وهو تكتيك لم تعرفه العرب. كفى الله المؤمنين القتال بإرسال ريح اقتلعت خيام المشركين.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>المساجد الثلاثة العظمى</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+            <div>
+                <h3>المسجد الحرام</h3>
+                <img src="https://i.pinimg.com/736x/96/d1/f7/96d1f7da5da36161ff1ae6a696076383.jpg" alt="الكعبة المشرفة">
+                <p>قبلة المسلمين، الصلاة فيه بـ 100 ألف صلاة. يضم الكعبة وبئر زمزم.</p>
+            </div>
+            <div>
+                
+                <h3>المسجد النبوي</h3>
+                <img src="https://i.pinimg.com/736x/1d/a5/1d/1da51df888d8add1b4c3915521177dd1.jpg" alt="الكعبة المشرفة">
+                <p>مسجد النبي ﷺ بالمدينة، الصلاة فيه بـ 1000 صلاة. يضم الروضة الشريفة.</p>
+            </div>
+            <div>
+                
+                <h3>المسجد الأقصى</h3>
+                <img src="https://i.pinimg.com/736x/74/6b/d2/746bd28d0717e5942e5485f312b6416c.jpg" alt="الكعبة المشرفة">
+                <p>أولى القبلتين، الصلاة فيه بـ 500 صلاة. ومنه عرج النبي للسماء.</p>
+            </div>
+        </div>
+        
+    </div>
+
+</div>
+
+<footer>
+    <p>تم تطوير هذه الموسوعة بواسطة عبد الرحمن | مبرمج ومؤرخ مستقبلي 2026</p>
+</footer>
+
+<script>
+    let count = 2015340120;
+    setInterval(() => {
+        count += Math.floor(Math.random() * 3) + 1;
+        document.getElementById("count").innerText = count.toLocaleString();
+    }, 1000);
+</script>
 
 </body>
 </html>
