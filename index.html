@@ -3,142 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أهمية الصلاة ونورها</title>
+    <title>نور الصلاة - دليل المسلم</title>
     <style>
-        /* --- تنسيقات التصميم (CSS) --- */
-        
-        /* تنسيق الجسد (Body): الألوان الخلفية والخطوط */
+        /* إعدادات الخلفية الغامقة والألوان الأساسية */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6; /* لون خلفية فاتح ومريح */
-            color: #333;
+            font-family: 'Cairo', sans-serif;
+            background-color: #121212; /* خلفية سوداء مريحة للعين */
+            color: #e0e0e0; /* لون نص فاتح */
             margin: 0;
             padding: 0;
-            line-height: 1.8;
         }
 
-        /* تنسيق الهيدر (الترويسة العلوي) */
         header {
-            background-color: #2c3e50; /* لون غامق ووقور */
+            background: linear-gradient(135deg, #1e2a38 0%, #27ae60 100%);
             color: white;
-            padding: 40px 20px;
+            padding: 60px 20px;
             text-align: center;
-            border-bottom: 5px solid #27ae60; /* خط أخضر تجميلي */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-
-        header p {
-            margin: 10px 0 0;
-            font-size: 1.2rem;
-            opacity: 0.8;
-        }
-
-        /* تنسيق الحاوية الرئيسية للمحتوى */
         .container {
-            max-width: 800px; /* عرض محدد لجعل القراءة أسهل */
-            margin: 40px auto; /* تمركز الحاوية في المنتصف */
+            max-width: 900px;
+            margin: 30px auto;
             padding: 20px;
-            background-color: white; /* خلفية بيضاء للمحتوى */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* ظل خفيف للشكل الجماعي */
-            border-radius: 10px;
         }
 
-        /* تنسيق العناوين الفرعية */
+        /* تنسيق البطاقات (Sections) */
+        .card {
+            background-color: #1e1e1e; /* لون كرت رمادي غامق */
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid #333;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px); /* تأثير حركة خفيف عند التمرير */
+            border-color: #27ae60;
+        }
+
         h2 {
-            color: #27ae60; /* لون أخضر للعناوين */
-            border-bottom: 2px solid #e0e0e0;
-            padding-bottom: 10px;
-            margin-top: 30px;
+            color: #2ecc71;
+            border-right: 4px solid #2ecc71;
+            padding-right: 15px;
         }
 
-        /* تنسيق الفقرات النصية */
-        p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
-
-        /* تنسيق الصور */
         .post-image {
-            width: 100%; /* تأخذ كامل عرض الحاوية */
-            height: auto; /* الحفاظ على أبعاد الصورة */
-            border-radius: 8px; /* حواف ناعمة */
+            width: 100%;
+            height: 400px;
+            object-fit: cover; /* لضمان عدم تمدد الصورة */
+            border-radius: 12px;
             margin: 20px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        /* تنسيق القوائم (أركان الصلاة) */
-        ul.prayer-list {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        ul.prayer-list li {
-            background-color: #ecf0f1;
-            margin-bottom: 10px;
+        /* تنسيق الأزرار التفاعلية */
+        .info-box {
+            background: #2c3e50;
             padding: 15px;
-            border-right: 5px solid #27ae60; /* خط أخضر جانبي */
-            border-radius: 5px;
-            font-size: 1.05rem;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
         }
 
-        /* تنسيق الفوتر (التذييل السفلي) */
+        .stat {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .stat h4 { margin: 0; color: #2ecc71; font-size: 1.5rem; }
+
         footer {
             text-align: center;
-            padding: 20px;
-            background-color: #2c3e50;
-            color: white;
-            margin-top: 40px;
+            padding: 30px;
+            background-color: #000;
+            font-size: 0.9rem;
+            color: #777;
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header>
-        <h1>الصلاة: عماد الدين ونور الحياة</h1>
-        <p>مرحباً بك في صفحة مخصصة لأهم ركن من أركان الإسلام بعد الشهادتين</p>
+        <h1>نور الصلاة</h1>
+        <p>قال رسول الله صلى الله عليه وسلم: "وجُعلت قرة عيني في الصلاة"</p>
     </header>
 
     <div class="container">
-        
-        <h2>مكانة الصلاة في الإسلام</h2>
-        <p>
-            تعتبر الصلاة الركن الثاني من أركان الإسلام، وهي الصلة المباشرة بين العبد وربه. هي أول ما يُحاسب عليه العبد يوم القيامة، فإن صلحت صلح سائر عمله، وإن فسدت فسد سائر عمله. الصلاة ليست مجرد حركات، بل هي طمأنينة للقلب وراحة للنفس.
-        </p>
 
-        <img src="https://images.unsplash.com/photo-1596112117189-94b29c924765?q=80&w=800" alt="صورة لشخص يصلي بخشوع" class="post-image">
+        <div class="card">
+            <h2>لماذا نصلي؟</h2>
+            <p>الصلاة هي عماد الدين، وهي أول ما يُسأل عنه العبد يوم القيامة. هي وقت مستقطع من ضجيج الحياة لتقف بين يدي الخالق.</p>
+            <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1000" class="post-image" alt="صورة مسجد">
+        </div>
 
-        <h2>من فضائل الصلاة</h2>
-        <p>
-            للصلاة فضائل عظيمة وثمرات جلية في الدنيا والآخرة، ومنها:
-        </p>
-        <ul class="prayer-list">
-            <li>✅ تكفير للسيئات والخطايا.</li>
-            <li>✅ نور لصاحبها في الدنيا والقبر والآخرة.</li>
-            <li>✅ سبب لدخول الجنة ومرافقة النبي صلى الله عليه وسلم.</li>
-            <li>✅ تنهى عن الفحشاء والمنكر.</li>
-            <li>✅ تجلب الرزق وتبارك في الوقت.</li>
-        </ul>
+        <div class="info-box">
+            <div class="stat">
+                <h4>5</h4>
+                <span>صلوات مفروضة</span>
+            </div>
+            <div class="stat">
+                <h4>17</h4>
+                <span>ركعة في اليوم</span>
+            </div>
+            <div class="stat">
+                <h4>∞</h4>
+                <span>راحة وطمأنينة</span>
+            </div>
+        </div>
 
-        <h2>أوقات الصلوات المفروضة</h2>
-        <p>
-            فرض الله على المسلمين خمس صلوات في اليوم والليلة، وجعل لها أوقاتاً محددة، كما قال تعالى: "إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَوْقُوتًا".
-        </p>
+        <div class="card">
+            <h2>السنن الرواتب</h2>
+            <p>للحفاظ على الفريضة، شرع الله لنا سنناً تجبر النقص وتزيد في الأجر:</p>
+            <ul style="color: #bbb;">
+                <li>ركعتان قبل الفجر.</li>
+                <li>أربع ركعات قبل الظهر وركعتان بعدها.</li>
+                <li>ركعتان بعد المغرب.</li>
+                <li>ركعتان بعد العشاء.</li>
+            </ul>
+            <img src="https://images.unsplash.com/photo-1584551270911-6556111ac94a?q=80&w=1000" class="post-image" alt="صورة مسبحة ومصحف">
+        </div>
 
-        <img src="https://images.unsplash.com/photo-1563283187-57b165fb5dfa?q=80&w=800" alt="صورة لمسجد وقت الغروب" class="post-image">
-
-        <h2>كيف نحافظ على الخشوع؟</h2>
-        <p>
-            الخشوع هو روح الصلاة ولبّها، ولتحقيقه يجب: الاستعداد الجيد لها بالوضوء، واستحضار عظمة الله تعالى، وتدبر الآيات المقروءة، وتجنب الشواغل الذهنية والمكانية.
-        </p>
+        <div class="card" style="background-color: #1a2a20;">
+            <h2>كيف تخشع في صلاتك؟</h2>
+            <p>1. بادر بالوضوء قبل الأذان.<br>
+               2. اترك هاتفك بعيداً عنك.<br>
+               3. تدبر معاني الآيات التي تقرؤها.<br>
+               4. اطمئن في الركوع والسجود.</p>
+        </div>
 
     </div>
 
     <footer>
-        <p>تم إنشاء هذه الصفحة بواسطة عبد الرحمن كجزء من مشروع تعلم HTML.</p>
+        <p>حقوق النشر © 2026 - مشروع عبد الرحمن البرمجي</p>
     </footer>
 
 </body>
