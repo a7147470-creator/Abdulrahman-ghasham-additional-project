@@ -32,22 +32,24 @@
         <div id="auth-options">
             <button onclick="showLogin()" style="width: 100%; padding: 15px; margin-bottom: 15px; background: #c9a050; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 1.1rem; color: #000;">تسجيل الدخول</button>
             <button onclick="showSignup()" style="width: 100%; padding: 15px; background: transparent; border: 2px solid #c9a050; color: #c9a050; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 1.1rem;">إنشاء حساب جديد</button>
-        <button onclick="enterAsGuest()" style="width: 100%; padding: 15px; margin-top: 10px; background: transparent; border: 1px solid #888; color: #888; border-radius: 10px; font-weight: bold; cursor: pointer;">الاستمرار كزائر</button>
+        <button onclick="enterAsGuest()" style="width: 100%; padding: 15px; margin-top: 10px; background: transparent; border: 1px solid #555; border-radius: 10px; color: #888; cursor: pointer;">الاستمرار كزائر</button>
         </div>
 
         <div id="login-form" style="display: none;">
-            <h3 style="color: #c9a050;">تسجيل الدخول</h3>
-            <input type="tel" id="loginPhone" placeholder="أدخل رقم جوالك (05xxxxxxxx)" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #333; background: #0d1117; color: white; text-align: center; font-size: 1rem;">
+            <h3 style="color: #c9a050; margin-bottom: 15px;">تسجيل الدخول</h3>
+            <input type="tel" id="loginPhone" placeholder="أدخل رقم جوالك" style="width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #3a3a3c; background: #1c1c1e; color: white;">
+            <input type="password" id="loginPass" placeholder="كلمة المرور" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #3a3a3c; background: #1c1c1e; color: white;">
             <button onclick="processLogin()" style="width: 100%; padding: 12px; background: #2ecc71; border: none; border-radius: 8px; color: white; font-weight: bold; cursor: pointer;">دخول</button>
-            <p onclick="backToOptions()" style="color: #888; cursor: pointer; margin-top: 15px; text-decoration: underline; font-size: 0.9rem;">رجوع للخيارات</p>
+            <p onclick="backToOptions()" style="color: #888; cursor: pointer; margin-top: 15px; text-decoration: underline;">رجوع للخيارات</p>
         </div>
 
         <div id="signup-form" style="display: none;">
-            <h3 style="color: #c9a050;">إنشاء حساب جديد</h3>
-            <input type="text" id="signupName" placeholder="اسمك المستعار" style="width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #333; background: #0d1117; color: white; text-align: center; font-size: 1rem;">
-            <input type="tel" id="signupPhone" placeholder="رقم الجوال (05xxxxxxxx)" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #333; background: #0d1117; color: white; text-align: center; font-size: 1rem;">
+            <h3 style="color: #c9a050; margin-bottom: 15px;">إنشاء حساب جديد</h3>
+            <input type="text" id="signupName" placeholder="اسمك المستعار" style="width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #3a3a3c; background: #1c1c1e; color: white;">
+            <input type="tel" id="signupPhone" placeholder="رقم الجوال (05xxxxxxxx)" style="width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #3a3a3c; background: #1c1c1e; color: white;">
+            <input type="password" id="signupPass" placeholder="كلمة المرور (A + a + 8 خانات)" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #3a3a3c; background: #1c1c1e; color: white;">
             <button onclick="processSignup()" style="width: 100%; padding: 12px; background: #2ecc71; border: none; border-radius: 8px; color: white; font-weight: bold; cursor: pointer;">تأكيد وإنشاء</button>
-            <p onclick="backToOptions()" style="color: #888; cursor: pointer; margin-top: 15px; text-decoration: underline; font-size: 0.9rem;">رجوع للخيارات</p>
+            <p onclick="backToOptions()" style="color: #888; cursor: pointer; margin-top: 15px; text-decoration: underline;">رجوع للخيارات</p>
         </div>
     </div>
 </div>
@@ -155,146 +157,101 @@
 <footer><p>حقوق النشر © 2026 - مشروع عبد الرحمن الرمحي</p></footer>
 
 <script>
-    // وظائف التنقل في الواجهة
-    function showLogin() {
-        document.getElementById('auth-options').style.display = 'none';
-        document.getElementById('login-form').style.display = 'block';
-    }
-    function showSignup() {
-        document.getElementById('auth-options').style.display = 'none';
-        document.getElementById('signup-form').style.display = 'block';
-    }
-    function backToOptions() {
-        document.getElementById('login-form').style.display = 'none';
-        document.getElementById('signup-form').style.display = 'none';
-        document.getElementById('auth-options').style.display = 'block';
-    }
-
-    // معالجة إنشاء الحساب
-    function processSignup() {
-        const name = document.getElementById('signupName').value;
-        const phone = document.getElementById('signupPhone').value;
-
-        if(name.length > 2 && phone.startsWith("05") && phone.length === 10) {
-            localStorage.setItem('user_name', name);
-            localStorage.setItem('user_phone', phone);
-            alert("تم إنشاء حسابك بنجاح يا " + name);
-            enterSite();
-        } else {
-            alert("يرجى التأكد من إدخال اسم صحيح ورقم جوال يبدأ بـ 05");
-        }
-    }
-
-// وظيفة تسجيل الدخول مع التحويل التلقائي
-function processLogin() {
-    const phone = document.getElementById('loginPhone').value;
-    const savedPhone = localStorage.getItem('user_phone');
-    const savedName = localStorage.getItem('user_name');
-
-    if (phone === savedPhone && savedPhone !== null) {
-        alert("مرحباً بك مجدداً يا " + savedName);
-        enterSite();
-    } else {
-        alert("هذا الرقم غير مسجل.. سيتم توجيهك لإنشاء حساب جديد");
-        document.getElementById('login-form').style.display = 'none';
-        document.getElementById('signup-form').style.display = 'block';
-        document.getElementById('signupPhone').value = phone;
-    }
+// 1. وظائف التنقل الأساسية (إظهار وإخفاء الواجهات)
+function showLogin() {
+    document.getElementById('auth-options').style.display = 'none';
+    document.getElementById('login-form').style.display = 'block';
 }
 
-// وظيفة إنشاء الحساب (المرحلة الأولى: إرسال كود وهمي)
-function processSignup() {
-    const name = document.getElementById('signupName').value;
-    const phone = document.getElementById('signupPhone').value;
-
-    if (name.length > 2 && phone.startsWith("05") && phone.length === 10) {
-        // نخزن الاسم والرقم مؤقتاً
-        localStorage.setItem('temp_name', name);
-        localStorage.setItem('temp_phone', phone);
-        
-        // محاكاة إرسال الكود
-        alert("تم إرسال كود التأكيد (1234) إلى جوالك");
-        
-        // إخفاء نموذج التسجيل وإظهار خانة الكود
-        document.getElementById('signup-form').innerHTML = `
-            <h3 style="color: #c9a050;">تأكيد رقم الجوال</h3>
-            <p>أدخل الكود المرسل (1234)</p>
-            <input type="text" id="otpInput" placeholder="----" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #333; background: #0d1117; color: white; text-align: center;">
-            <button onclick="verifyOTP()" style="width: 100%; padding: 12px; background: #c9a050; border: none; border-radius: 8px; color: black; font-weight: bold; cursor: pointer;">تأكيد الكود</button>
-        `;
-    } else {
-        alert("يرجى إدخال اسم صحيح ورقم جوال يبدأ بـ 05");
-    }
+function showSignup() {
+    document.getElementById('auth-options').style.display = 'none';
+    document.getElementById('signup-form').style.display = 'block';
 }
 
-// وظيفة التحقق من الكود وحفظ البيانات نهائياً
-function verifyOTP() {
-    const code = document.getElementById('otpInput').value;
-    if (code === "1234") {
-        const finalName = localStorage.getItem('temp_name');
-        const finalPhone = localStorage.getItem('temp_phone');
-        
-        localStorage.setItem('user_name', finalName);
-        localStorage.setItem('user_phone', finalPhone);
-        localStorage.removeItem('temp_name');
-        localStorage.removeItem('temp_phone');
-        
-        alert("تم التأكيد بنجاح! أهلاً بك يا " + finalName);
-        enterSite();
-    } else {
-        alert("الكود خاطئ! جرب إدخال 1234");
-    }
+function backToOptions() {
+    document.getElementById('login-form').style.display = 'none';
+    document.getElementById('signup-form').style.display = 'none';
+    document.getElementById('auth-options').style.display = 'block';
 }
 
-// وظيفة الدخول للموقع وإظهار المحتوى
+// 2. وظيفة الدخول للموقع (إخفاء الشاشة السوداء)
 function enterSite() {
     document.getElementById('landing-page').style.display = 'none';
     document.getElementById('main-content').style.display = 'block';
 }
 
-// فحص الدخول عند فتح الصفحة
-//window.onload = function() {
-    if(localStorage.getItem('user_phone')) {
-        enterSite();
-    }
-//}
-function logout()
- {
-    // هنا فقط نعيد تحميل الصفحة
-    // بما أننا برمجنا الموقع يفتح واجهة الدخول عند التحميل (إلا إذا كان فيه كود دخول مباشر)
-    // راح نعدل المنطق شوي بحيث نخليه "يخرج" للواجهة بس يحفظ البيانات
-    
-    if(confirm("هل تريد العودة لصفحة الدخول؟ (بياناتك ستبقى محفوظة)")) {
-        // بدلاً من مسح البيانات، فقط نخفي الموقع ونظهر واجهة الدخول
-        document.getElementById('main-content').style.display = 'none';
-        document.getElementById('landing-page').style.display = 'flex';
-        
-        // ونرجع نظهر خيارات الدخول الأساسية
-        document.getElementById('login-form').style.display = 'none';
-        document.getElementById('signup-form').style.display = 'none';
-        document.getElementById('auth-options').style.display = 'block';
-    }
-}
- {
-    // هنا فقط نعيد تحميل الصفحة
-    // بما أننا برمجنا الموقع يفتح واجهة الدخول عند التحميل (إلا إذا كان فيه كود دخول مباشر)
-    // راح نعدل المنطق شوي بحيث نخليه "يخرج" للواجهة بس يحفظ البيانات
-    
-    if(confirm("هل تريد العودة لصفحة الدخول؟ (بياناتك ستبقى محفوظة)")) {
-        // بدلاً من مسح البيانات، فقط نخفي الموقع ونظهر واجهة الدخول
-        document.getElementById('main-content').style.display = 'none';
-        document.getElementById('landing-page').style.display = 'flex';
-        function enterAsGuest() {
-    // تنبيه بسيط يعرف الزائر بمميزات التسجيل (اختياري)
-    alert("مرحباً بك كزائر! ملاحظة: لن يتم حفظ تقدمك أو بياناتك إلا عند إنشاء حساب.");
-    
-    // إخفاء واجهة الدخول وإظهار الموقع مباشرة
+// 3. وظيفة الاستمرار كزائر (اللي كانت معلقة عندك)
+function enterAsGuest() {
+    alert("مرحباً بك كزائر!");
     enterSite();
 }
-        // ونرجع نظهر خيارات الدخول الأساسية
-        document.getElementById('login-form').style.display = 'none';
-        document.getElementById('signup-form').style.display = 'none';
-        document.getElementById('auth-options').style.display = 'block';
+
+// 4. وظيفة إنشاء حساب جديد (بشروطك: 8 خانات + حرف كبير + حرف صغير)
+function processSignup() {
+    let name = document.getElementById('signupName').value;
+    let phone = document.getElementById('signupPhone').value;
+    let pass = document.getElementById('signupPass').value;
+    let savedPhone = localStorage.getItem('user_phone');
+
+    // فحص شروط كلمة المرور
+    let hasUpper = /[A-Z]/.test(pass);
+    let hasLower = /[a-z]/.test(pass);
+    let isLongEnough = pass.length >= 8;
+
+    if (name && phone && pass) {
+        // فحص إذا الحساب موجود مسبقاً
+        if (phone === savedPhone) {
+            alert("هذا الرقم مسجل مسبقاً! توجه لتسجيل الدخول.");
+            showLogin();
+            return;
+        }
+
+        // فحص قوة كلمة المرور
+        if (!isLongEnough || !hasUpper || !hasLower) {
+            alert("كلمة المرور غير مستوفية للشروط!\n- يجب أن لا تقل عن 8 خانات.\n- يجب أن تحتوي على حرف كبير (A-Z).\n- يجب أن تحتوي على حرف صغير (a-z).");
+            return;
+        }
+
+        alert("كود التأكيد الخاص بك هو: 1234");
+        let userCode = prompt("أدخل كود التأكيد (1234):");
+
+        if (userCode === "1234") {
+            localStorage.setItem('user_name', name);
+            localStorage.setItem('user_phone', phone);
+            localStorage.setItem('user_pass', pass);
+            alert("تم إنشاء حسابك بنجاح!");
+            enterSite();
+        } else {
+            alert("كود التأكيد خطأ!");
+        }
+    } else {
+        alert("يرجى تعبئة جميع الخانات.");
+    }
+}
+
+// 5. وظيفة تسجيل الدخول (مطابقة الجوال والباسورد)
+function processLogin() {
+    let phone = document.getElementById('loginPhone').value;
+    let pass = document.getElementById('loginPass').value;
+    
+    let savedPhone = localStorage.getItem('user_phone');
+    let savedPass = localStorage.getItem('user_pass');
+    let savedName = localStorage.getItem('user_name');
+
+    if (phone === savedPhone && pass === savedPass) {
+        alert("مرحباً بك مجدداً يا " + savedName);
+        enterSite();
+    } else {
+        alert("خطأ في رقم الجوال أو كلمة المرور!");
+    }
+}
+
+// 6. وظيفة تسجيل الخروج
+function logout() {
+    if (confirm("هل تريد العودة لصفحة الدخول؟")) {
+        document.getElementById('main-content').style.display = 'none';
+        document.getElementById('landing-page').style.display = 'flex';
+        backToOptions();
     }
 }
 </script>
