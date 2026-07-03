@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نظام التحول الرقمي | دعم - بلدية محافظة صبيا</title>
+<style>
+  :root{
+    --bg: #e3ecdb;
+    --header-bg: #d9d9d9;
+    --card-bg: #ffffff;
+    --green-dark: #4a7c2f;
+    --green-mid: #5b8c34;
+    --green-btn: #4f7a2f;
+    --green-btn-hover: #3f6425;
+    --green-border: #8fbf6b;
+    --input-bg: #eaf3e2;
+    --text-dark: #33421f;
+    --muted: #7c8a6d;
+    --shadow: 0 4px 14px rgba(60, 90, 40, 0.12);
+  }
+  body.dark-theme{
+    --bg: #141a10;
+    --header-bg: #202b19;
+    --card-bg: #1d2617;
+    --green-dark: #8bcf5e;
+    --green-mid: #7ab84a;
+    --green-btn: #4f7a2f;
+    --green-btn-hover: #5f9438;
+    --green-border: #4a6b34;
+    --input-bg: #26331d;
+    --text-dark: #e7f0df;
+    --muted: #93a683;
+    --shadow: 0 4px 14px rgba(0,0,0,0.45);
+  }
+  * { box-sizing: border-box; }
+  body{
+    margin:0;
+    font-family: 'Tahoma', 'Segoe UI', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text-dark);
+    min-height:100vh;
+    transition: background .2s ease, color .2s ease;
+  }
+  .topbar{
+    background: var(--header-bg);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding: 18px 40px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .topbar .brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .topbar .brand .logo{
+    width:52px;height:52px;
+    background: linear-gradient(135deg, var(--green-dark), #2e8b8b);
+    border-radius: 10px;
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-weight:bold;font-size:20px;
+    flex-shrink:0;
+  }
+  .topbar .brand .titles{ text-align:right; line-height:1.5; }
+  .topbar .brand .titles h1{
+    margin:0; font-size:16px; color: var(--green-dark); font-weight:700;
+  }
+  .topbar .brand .titles p{
+    margin:0; font-size:12px; color: var(--muted);
+  }
+  .topbar .datetime{
+    font-size:12px; color: var(--text-dark); text-align:right; min-width:150px;
+  }
+  .topbar .nav-btn{
+    background: var(--input-bg);
+    border: 1px solid var(--green-border);
+    color: var(--green-dark);
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-weight:600;
+    cursor:pointer;
+    font-size:14px;
+  }
+  .topbar .nav-btn:hover{ background:#dcecd0; }
+  body.dark-theme .topbar .nav-btn:hover{ background:#33452a; }
+  .topbar .nav-group{ display:flex; gap:10px; flex-wrap:wrap; }
+
+  .container{
+    max-width: 1120px;
+    margin: 36px auto;
+    padding: 0 20px;
+    display:flex;
+    flex-direction:column;
+    gap: 26px;
+  }
+  .card{
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    overflow:hidden;
+  }
+  .card .welcome{
+    background: var(--green-btn);
+    color:#fff;
+    padding: 26px 34px;
+    font-size: 18px;
+    font-weight:700;
+  }
+  .card-body{
+    padding: 34px;
+  }
+  .section-title{
+    color: var(--green-dark);
+    font-size:17px;
+    font-weight:700;
+    margin: 0 0 20px;
+  }
+
+  .field-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .field label{
+    display:block;
+    color: var(--green-dark);
+    font-weight:700;
+    margin-bottom:8px;
+    font-size:15px;
+  }
+  .field input, .field select, .field textarea{
+    width:100%;
+    background: var(--input-bg);
+    border: 1.5px solid var(--green-border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 14px;
+    color: var(--text-dark);
+    font-family: inherit;
+    text-align:center;
+  }
+  .field input:read-only{ color:#4d5a3d; }
+  body.dark-theme .field input:read-only{ color:#c7d6bb; }
+  .field input::placeholder{ color:#a9c191; }
+  .field select{ cursor:pointer; text-align-last:center; }
+  .field textarea{ resize:vertical; min-height:70px; text-align:right; }
+
+  .field.other-box{ grid-column: 2 / 3; }
+  .other-note{
+    background:var(--card-bg);
+    border:1px solid var(--green-border);
+    border-radius:8px;
+    padding:16px;
+    font-size:13px;
+    color: var(--muted);
+    text-align:center;
+    line-height:1.6;
+  }
+
+  .actions-row{ margin-top: 30px; display:flex; justify-content:flex-start; }
+  .btn-primary{
+    background: var(--green-btn);
+    color:#fff;
+    border:none;
+    padding: 13px 30px;
+    border-radius: 8px;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+  }
+  .btn-primary:hover{ background: var(--green-btn-hover); }
+  .btn-secondary{
+    background: var(--card-bg);
+    color: var(--green-dark);
+    border: 1.5px solid var(--green-border);
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-size:14px;
+    font-weight:700;
+    cursor:pointer;
+  }
+  .btn-secondary:hover{ background: var(--input-bg); }
+  .btn-danger{
+    background: var(--card-bg);
+    color:#b83b3b;
+    border:1.5px solid #e0a3a3;
+    padding:6px 14px;
+    border-radius:6px;
+    font-size:12px;
+    cursor:pointer;
+  }
+  .btn-danger:hover{ background:#fdeeee; }
+  body.dark-theme .btn-danger:hover{ background:#3a2020; }
+
+  .multi-note{ margin-top: 20px; color: var(--green-dark); font-weight:700; font-size:15px; }
+
+  /* Login */
+  .login-wrap{ max-width: 480px; margin: 90px auto; }
+  .login-card{
+    background: var(--card-bg);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    overflow:hidden;
+    text-align:center;
+  }
+  .login-header{ background: var(--header-bg); padding: 34px 20px 26px; position:relative; }
+  .login-header .logo{
+    width:64px;height:64px; margin:0 auto 12px;
+    background: linear-gradient(135deg, var(--green-dark), #2e8b8b);
+    border-radius: 14px;
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-weight:bold;font-size:24px;
+  }
+  .login-header h1{ margin:0; font-size:18px; color: var(--green-dark); font-weight:700; }
+  .login-header p{ margin:4px 0 0; font-size:13px; color: var(--muted); }
+  .login-body{ padding: 36px 40px 40px; }
+  .login-body label{ display:block; color: var(--green-dark); font-weight:700; margin-bottom:10px; font-size:15px; }
+  .login-body input{
+    width:100%; background: var(--input-bg); border: 1.5px solid var(--green-border);
+    border-radius: 8px; padding: 13px 14px; font-size:14px; color: var(--text-dark);
+    text-align:center; margin-bottom: 28px;
+  }
+  .login-body .btn-primary{ width:100%; padding:14px; }
+  .admin-link{
+    display:block; margin-top:22px; color: var(--green-dark);
+    font-size:13px; font-weight:600; text-decoration:none; cursor:pointer;
+  }
+  .admin-link:hover{ text-decoration:underline; }
+  .error-msg{ color:#e05656; font-size:12px; margin-top:-20px; margin-bottom:16px; display:none; }
+
+  .theme-toggle-corner{
+    position:absolute;
+    top:14px;
+    left:14px;
+    background: var(--card-bg);
+    border: 1px solid var(--green-border);
+    color: var(--green-dark);
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size:12px;
+    font-weight:700;
+    cursor:pointer;
+  }
+
+  /* Tables */
+  .table-wrap{ padding: 34px; }
+  .table-wrap h2{ color: var(--green-dark); font-size:18px; margin:0 0 20px; }
+  table{ width:100%; border-collapse: collapse; font-size:14px; }
+  thead th{
+    background: var(--green-border); color: #fff; padding: 12px 10px;
+    text-align:center; font-weight:700; border: 1px solid var(--card-bg);
+  }
+  tbody td{ padding: 12px 10px; text-align:center; border: 1px solid var(--bg); background: var(--input-bg); }
+  select.status-select, select.mini-select{
+    background: var(--card-bg); border:1px solid var(--green-border); border-radius:6px;
+    padding:6px 8px; font-size:13px; color: var(--text-dark);
+  }
+  .filters-row{ display:flex; gap:16px; align-items:flex-end; margin-top: 26px; flex-wrap:wrap; }
+  .filters-row .field{ flex:0 0 auto; min-width:160px; }
+  .filters-row label{ color: var(--green-dark); font-weight:700; font-size:13px; display:block; margin-bottom:6px; }
+  .filters-row input[type=date]{
+    background: var(--input-bg); border:1.5px solid var(--green-border);
+    border-radius:8px; padding:10px 12px; font-size:13px; color: var(--text-dark);
+  }
+  .empty-row td{ color: var(--muted); padding: 30px; background: var(--card-bg); }
+
+  .admin-add-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 18px;
+    align-items:end;
+  }
+  .admin-add-grid.issue-grid{ grid-template-columns: 1fr 1fr 1.4fr auto; }
+  .divider{ height:1px; background: var(--bg); margin: 30px 0; }
+
+  .badge{
+    display:inline-block; padding:3px 10px; border-radius:20px; font-size:12px; font-weight:700;
+  }
+  .badge.pending{ background:#fdf3d9; color:#a5790f; }
+  .badge.done{ background:#e1f2d8; color:#2f6521; }
+  .badge.saved{ background:#e2eef8; color:#2f6fa3; }
+
+  .hidden{ display:none !important; }
+
+  .row-action-btns{ display:flex; gap:6px; justify-content:center; flex-wrap:wrap; }
+  .edit-input{
+    width:100%; padding:7px 8px; border-radius:6px; border:1px solid var(--green-border);
+    background: var(--card-bg); color: var(--text-dark); text-align:center; font-size:13px;
+  }
+
+  @media (max-width: 720px){
+    .topbar{ flex-direction:column; align-items:flex-start; padding:16px 18px; }
+    .field-grid{ grid-template-columns: 1fr; }
+    .admin-add-grid, .admin-add-grid.issue-grid{ grid-template-columns: 1fr; }
+    .card .welcome{ font-size:16px; padding:20px; }
+    .card-body{ padding:20px; }
+    table, thead, tbody, th, td, tr{ display:block; }
+    thead{ display:none; }
+    tbody td{ text-align:right; border:none; border-bottom:1px solid var(--bg); }
+    tbody tr{ margin-bottom:14px; display:block; background: var(--card-bg); border-radius:10px; box-shadow: var(--shadow); padding:8px; }
+    tbody td::before{
+      content: attr(data-label); font-weight:700; color: var(--green-dark);
+      display:inline-block; min-width:110px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== LOGIN VIEW ===================== -->
+<div id="view-login">
+  <div class="login-wrap">
+    <div class="login-card">
+      <div class="login-header">
+        <button class="theme-toggle-corner theme-toggle-btn" onclick="toggleTheme()">🌙 غامق</button>
+        <div class="logo">أ</div>
+        <h1>أمانة منطقة جازان<br>بلدية محافظة صبيا</h1>
+        <p>نظام التحول الرقمي | دعم<br>بلدية محافظة صبيا</p>
+      </div>
+      <div class="login-body">
+        <label for="loginEmpNo">رقم الموظف</label>
+        <input type="text" id="loginEmpNo" placeholder="مثال: 123-">
+        <div class="error-msg" id="loginError">الرجاء إدخال رقم الموظف</div>
+        <button class="btn-primary" onclick="handleLogin()">تسجيل دخول</button>
+        <a class="admin-link" onclick="showAdminLogin()">دخول مسؤول النظام</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== ADMIN LOGIN VIEW ===================== -->
+<div id="view-admin-login" class="hidden">
+  <div class="login-wrap">
+    <div class="login-card">
+      <div class="login-header">
+        <button class="theme-toggle-corner theme-toggle-btn" onclick="toggleTheme()">🌙 غامق</button>
+        <div class="logo">أ</div>
+        <h1>أمانة منطقة جازان<br>بلدية محافظة صبيا</h1>
+        <p>نظام التحول الرقمي | دعم</p>
+      </div>
+      <div class="login-body">
+        <label for="adminPass">كلمة مرور المسؤول</label>
+        <input type="password" id="adminPass" placeholder="••••••••">
+        <div class="error-msg" id="adminError">كلمة المرور غير صحيحة</div>
+        <button class="btn-primary" onclick="handleAdminLogin()">دخول مسؤول النظام</button>
+        <a class="admin-link" onclick="showLogin()">عودة لتسجيل الدخول</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== EMPLOYEE DASHBOARD VIEW ===================== -->
+<div id="view-employee" class="hidden">
+  <div class="topbar">
+    <div class="nav-group">
+      <button class="nav-btn" onclick="showMyRequests()">سجل الطلبات</button>
+      <button class="nav-btn theme-toggle-btn" onclick="toggleTheme()">🌙 غامق</button>
+    </div>
+    <div style="display:flex; align-items:center; gap:20px;">
+      <div class="datetime" id="dt-employee"></div>
+      <div class="brand">
+        <div class="titles">
+          <h1>نظام التحول الرقمي | دعم</h1>
+          <p>بلدية محافظة صبيا</p>
+        </div>
+        <div class="logo">أ</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <div class="welcome">مرحبا بك: <span id="empWelcomeName"></span></div>
+      <div class="card-body">
+        <div class="field-grid">
+          <div class="field">
+            <label>الاايميل</label>
+            <input type="email" id="empEmail" placeholder="mmm@gmail.com">
+          </div>
+          <div class="field">
+            <label>اسم الموظف</label>
+            <input type="text" id="empName" readonly>
+          </div>
+          <div class="field">
+            <label>رقم الموظف</label>
+            <input type="text" id="empNo" readonly>
+          </div>
+
+          <div class="field" style="grid-column: 1 / 2; align-self:start;">
+            <button class="btn-primary" style="width:100%;" onclick="submitRequest()">ارسال الطلب</button>
+          </div>
+          <div></div>
+          <div class="field">
+            <label>تفاصيل الخدمة</label>
+            <select id="serviceType" onchange="onServiceTypeChange()"></select>
+          </div>
+        </div>
+
+        <div class="field-grid" id="otherBoxRow" style="margin-top:24px; display:none;">
+          <div></div>
+          <div class="field other-box">
+            <textarea id="otherDetails" placeholder="عند اختيار أخرى يفتح مربع حواري لكتابة تفاصيل الخدمة المطلوبة"></textarea>
+          </div>
+          <div></div>
+        </div>
+
+        <div class="multi-note">إمكانية اختيار اكثر من خدمة</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== EMPLOYEE MY-REQUESTS VIEW ===================== -->
+<div id="view-my-requests" class="hidden">
+  <div class="topbar">
+    <div class="nav-group">
+      <button class="nav-btn" onclick="showEmployeeHome()">طلب جديد</button>
+      <button class="nav-btn theme-toggle-btn" onclick="toggleTheme()">🌙 غامق</button>
+    </div>
+    <div style="display:flex; align-items:center; gap:20px;">
+      <div class="datetime" id="dt-myreq"></div>
+      <div class="brand">
+        <div class="titles">
+          <h1>نظام التحول الرقمي | دعم</h1>
+          <p>بلدية محافظة صبيا</p>
+        </div>
+        <div class="logo">أ</div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="card">
+      <div class="welcome">مرحبا بك: <span id="myReqWelcomeName"></span></div>
+      <div class="table-wrap">
+        <h2>طلبات دعم</h2>
+        <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>الرقم الوظيفي</th>
+              <th>اسم الموظف</th>
+              <th>الايميل الرسمي</th>
+              <th>تفاصيل الخدمة</th>
+              <th>الاجراء المتخذ</th>
+              <th>الحالة</th>
+            </tr>
+          </thead>
+          <tbody id="myReqTableBody"></tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== ADMIN DASHBOARD VIEW ===================== -->
+<div id="view-admin" class="hidden">
+  <div class="topbar">
+    <div class="nav-group">
+      <button class="nav-btn" onclick="handleLogout()">تسجيل خروج</button>
+      <button class="nav-btn theme-toggle-btn" onclick="toggleTheme()">🌙 غامق</button>
+    </div>
+    <div style="display:flex; align-items:center; gap:20px;">
+      <div class="datetime" id="dt-admin"></div>
+      <div class="brand">
+        <div class="titles">
+          <h1>نظام التحول الرقمي | دعم</h1>
+          <p>بلدية محافظة صبيا</p>
+        </div>
+        <div class="logo">أ</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- Welcome + management: employees -->
+    <div class="card">
+      <div class="welcome">مرحبا بك: مسؤول النظام</div>
+      <div class="card-body">
+        <div class="section-title">إضافة موظف جديد</div>
+        <div class="admin-add-grid">
+          <div class="field">
+            <label>رقم الموظف</label>
+            <input type="text" id="newEmpNo" placeholder="مثال: 2033">
+          </div>
+          <div class="field">
+            <label>اسم الموظف</label>
+            <input type="text" id="newEmpName" placeholder="اسم الموظف">
+          </div>
+          <div class="field">
+            <label>الايميل الرسمي</label>
+            <input type="email" id="newEmpEmail" placeholder="name@momah.gov.sa">
+          </div>
+          <button class="btn-primary" onclick="addEmployee()">إضافة</button>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section-title">قائمة الموظفين</div>
+        <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>رقم الموظف</th>
+              <th>اسم الموظف</th>
+              <th>الايميل الرسمي</th>
+              <th>إجراء</th>
+            </tr>
+          </thead>
+          <tbody id="employeesTableBody"></tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Issue types management -->
+    <div class="card">
+      <div class="card-body">
+        <div class="section-title">إضافة نوع مشكلة جديد</div>
+        <div class="admin-add-grid issue-grid">
+          <div class="field">
+            <label>نوع المشكلة</label>
+            <input type="text" id="newIssueName" placeholder="مثال: تعليق النظام">
+          </div>
+          <div class="field">
+            <label>التصنيف</label>
+            <input type="text" id="newIssueCategory" list="categoryList" placeholder="اختر تصنيفاً أو اكتب تصنيفاً جديداً">
+            <datalist id="categoryList"></datalist>
+          </div>
+          <div class="field">
+            <label>الحل (اختياري)</label>
+            <input type="text" id="newIssueSolution" placeholder="اكتب الحل إن وجد">
+          </div>
+          <button class="btn-primary" onclick="addIssueType()">إضافة</button>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section-title">قائمة أنواع المشاكل</div>
+        <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>نوع المشكلة</th>
+              <th>التصنيف</th>
+              <th>الحل</th>
+              <th>حذف</th>
+            </tr>
+          </thead>
+          <tbody id="issueTypesTableBody"></tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- All requests -->
+    <div class="card">
+      <div class="table-wrap">
+        <h2>جميع الطلبات</h2>
+        <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>الرقم الوظيفي</th>
+              <th>اسم الموظف</th>
+              <th>الايميل الرسمي</th>
+              <th>تفاصيل الخدمة</th>
+              <th>الاجراء المتخذ</th>
+              <th>الحالة</th>
+            </tr>
+          </thead>
+          <tbody id="adminTableBody"></tbody>
+        </table>
+        </div>
+
+        <div class="filters-row">
+          <button class="btn-primary" onclick="printRequests()">طباعة</button>
+          <div class="field">
+            <label>من تاريخ</label>
+            <input type="date" id="filterFrom">
+          </div>
+          <div class="field">
+            <label>الى تاريخ</label>
+            <input type="date" id="filterTo">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* ===================== Admin password ===================== */
+const ADMIN_PASSWORD = "0581789770";
+
+/* ===================== In-memory data ===================== */
+let employees = [
+  { empNo: "2020", name: "محمد علي محمد خالدي", email: "msjjsa@momah.gov.sa" },
+  { empNo: "20202", name: "منصور مفرح المالكي", email: "" }
+];
+
+let categories = ["أنظمة", "أجهزة", "طابعات", "ماسح ضوئي", "شبكة نت", "أخرى"];
+
+let issueTypes = [
+  { name: "أنظمة", category: "أنظمة", solution: "" },
+  { name: "أجهزة", category: "أجهزة", solution: "" },
+  { name: "طابعات", category: "طابعات", solution: "" },
+  { name: "ماسح ضوئي", category: "ماسح ضوئي", solution: "" },
+  { name: "شبكة نت", category: "شبكة نت", solution: "" }
+];
+
+const ACTION_OPTIONS = ["-اخر-", "جديد", "تثبيت", "صيانة", "فورمات", "ربط كلمة مرور", "منجز"];
+const STATUS_OPTIONS = ["قيد المراجعة", "حفظ", "منجز"];
+
+let requests = [
+  {
+    empNo: "2020",
+    empName: "محمد علي محمد خالدي",
+    email: "msjjsa@momah.gov.sa",
+    service: "أنظمة - شبكات",
+    action: "منجز",
+    status: "حفظ",
+    date: "2026-03-05"
+  }
+];
+
+let currentEmployee = null; // { empNo, name, email }
+let editingEmpIndex = null; // index of employee currently being edited in admin table
+let isDarkTheme = false;
+
+/* ===================== Theme ===================== */
+function toggleTheme(){
+  isDarkTheme = !isDarkTheme;
+  document.body.classList.toggle("dark-theme", isDarkTheme);
+  document.querySelectorAll(".theme-toggle-btn").forEach(btn=>{
+    btn.textContent = isDarkTheme ? "☀️ فاتح" : "🌙 غامق";
+  });
+}
+
+/* ===================== Date/time header ===================== */
+function formatDateTime(){
+  const now = new Date();
+  const days = ["الأحد","الإثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"];
+  const months = ["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"];
+  const dayName = days[now.getDay()];
+  const day = now.getDate();
+  const month = months[now.getMonth()];
+  const year = now.getFullYear();
+  let hours = now.getHours();
+  const minutes = now.getMinutes().toString().padStart(2,"0");
+  const ampm = hours >= 12 ? "م" : "ص";
+  hours = hours % 12; if(hours === 0) hours = 12;
+  return `${dayName}، ${day} ${month} ${year}<br>${hours}:${minutes} ${ampm}`;
+}
+function tickClock(){
+  const str = formatDateTime();
+  ["dt-employee","dt-myreq","dt-admin"].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.innerHTML = str;
+  });
+}
+setInterval(tickClock, 1000*30);
+
+/* ===================== View switching ===================== */
+function hideAll(){
+  ["view-login","view-admin-login","view-employee","view-my-requests","view-admin"].forEach(id=>{
+    document.getElementById(id).classList.add("hidden");
+  });
+}
+function showLogin(){
+  hideAll();
+  document.getElementById("view-login").classList.remove("hidden");
+  document.getElementById("loginEmpNo").value = "";
+  document.getElementById("loginError").style.display = "none";
+}
+function showAdminLogin(){
+  hideAll();
+  document.getElementById("view-admin-login").classList.remove("hidden");
+  document.getElementById("adminPass").value = "";
+  document.getElementById("adminError").style.display = "none";
+}
+function showEmployeeHome(){
+  hideAll();
+  document.getElementById("view-employee").classList.remove("hidden");
+  document.getElementById("empWelcomeName").textContent = currentEmployee.name;
+  document.getElementById("empEmail").value = currentEmployee.email || "";
+  document.getElementById("empName").value = currentEmployee.name;
+  document.getElementById("empNo").value = currentEmployee.empNo;
+  populateServiceDropdown();
+  document.getElementById("otherDetails").value = "";
+  document.getElementById("otherBoxRow").style.display = "none";
+  tickClock();
+}
+function showMyRequests(){
+  hideAll();
+  document.getElementById("view-my-requests").classList.remove("hidden");
+  document.getElementById("myReqWelcomeName").textContent = currentEmployee.name;
+  renderMyRequests();
+  tickClock();
+}
+function showAdmin(){
+  hideAll();
+  document.getElementById("view-admin").classList.remove("hidden");
+  editingEmpIndex = null;
+  populateCategoryList();
+  renderEmployeesTable();
+  renderIssueTypesTable();
+  renderAdminTable();
+  tickClock();
+}
+
+/* ===================== Login handlers ===================== */
+function handleLogin(){
+  const empNo = document.getElementById("loginEmpNo").value.trim();
+  const errEl = document.getElementById("loginError");
+  if(!empNo){
+    errEl.textContent = "الرجاء إدخال رقم الموظف";
+    errEl.style.display = "block";
+    return;
+  }
+  const emp = employees.find(e => e.empNo === empNo);
+  if(!emp){
+    errEl.textContent = "رقم الموظف غير مسجل، تواصل مع المسؤول لإضافتك";
+    errEl.style.display = "block";
+    return;
+  }
+  errEl.style.display = "none";
+  currentEmployee = { empNo: emp.empNo, name: emp.name, email: emp.email };
+  showEmployeeHome();
+}
+function handleAdminLogin(){
+  const pass = document.getElementById("adminPass").value;
+  const errEl = document.getElementById("adminError");
+  if(pass !== ADMIN_PASSWORD){
+    errEl.style.display = "block";
+    return;
+  }
+  errEl.style.display = "none";
+  showAdmin();
+}
+function handleLogout(){
+  currentEmployee = null;
+  showLogin();
+}
+
+/* ===================== Employee form logic ===================== */
+function populateServiceDropdown(){
+  const sel = document.getElementById("serviceType");
+  sel.innerHTML = '<option value="">اختر خدمة-</option>';
+  issueTypes.forEach(it => {
+    const opt = document.createElement("option");
+    opt.value = it.name;
+    opt.textContent = `${it.category} - ${it.name}`;
+    sel.appendChild(opt);
+  });
+  const otherOpt = document.createElement("option");
+  otherOpt.value = "اخرى";
+  otherOpt.textContent = "اخرى";
+  sel.appendChild(otherOpt);
+}
+function onServiceTypeChange(){
+  const val = document.getElementById("serviceType").value;
+  document.getElementById("otherBoxRow").style.display = (val === "اخرى") ? "flex" : "none";
+}
+function submitRequest(){
+  const service = document.getElementById("serviceType");
+  if(!service.value){
+    alert("الرجاء اختيار تفاصيل الخدمة");
+    return;
+  }
+  let serviceText;
+  if(service.value === "اخرى"){
+    const other = document.getElementById("otherDetails").value.trim();
+    if(!other){
+      alert("الرجاء كتابة تفاصيل الخدمة المطلوبة");
+      return;
+    }
+    serviceText = "أخرى - " + other;
+  } else {
+    const match = issueTypes.find(it => it.name === service.value);
+    serviceText = match ? `${match.category} - ${match.name}` : service.value;
+  }
+  const today = new Date().toISOString().slice(0,10);
+  requests.push({
+    empNo: currentEmployee.empNo,
+    empName: currentEmployee.name,
+    email: document.getElementById("empEmail").value.trim(),
+    service: serviceText,
+    action: "-اخر-",
+    status: "قيد المراجعة",
+    date: today
+  });
+  alert("تم إرسال الطلب بنجاح");
+  showMyRequests();
+}
+
+/* ===================== Admin: employees management ===================== */
+function addEmployee(){
+  const no = document.getElementById("newEmpNo").value.trim();
+  const name = document.getElementById("newEmpName").value.trim();
+  const email = document.getElementById("newEmpEmail").value.trim();
+  if(!no || !name){
+    alert("الرجاء إدخال رقم الموظف واسمه");
+    return;
+  }
+  if(employees.some(e => e.empNo === no)){
+    alert("رقم الموظف مسجل مسبقًا");
+    return;
+  }
+  employees.push({ empNo: no, name, email });
+  document.getElementById("newEmpNo").value = "";
+  document.getElementById("newEmpName").value = "";
+  document.getElementById("newEmpEmail").value = "";
+  renderEmployeesTable();
+}
+function deleteEmployee(empNo){
+  if(!confirm("هل تريد حذف هذا الموظف؟")) return;
+  employees = employees.filter(e => e.empNo !== empNo);
+  editingEmpIndex = null;
+  renderEmployeesTable();
+}
+function editEmployee(index){
+  editingEmpIndex = index;
+  renderEmployeesTable();
+}
+function cancelEmployeeEdit(){
+  editingEmpIndex = null;
+  renderEmployeesTable();
+}
+function saveEmployeeEdit(index){
+  const noEl = document.getElementById("editEmpNo_" + index);
+  const nameEl = document.getElementById("editEmpName_" + index);
+  const emailEl = document.getElementById("editEmpEmail_" + index);
+  const no = noEl.value.trim();
+  const name = nameEl.value.trim();
+  const email = emailEl.value.trim();
+  if(!no || !name){
+    alert("الرجاء إدخال رقم الموظف واسمه");
+    return;
+  }
+  if(employees.some((e, i) => e.empNo === no && i !== index)){
+    alert("رقم الموظف مستخدم مسبقًا لموظف آخر");
+    return;
+  }
+  employees[index] = { empNo: no, name, email };
+  editingEmpIndex = null;
+  renderEmployeesTable();
+}
+function renderEmployeesTable(){
+  const tbody = document.getElementById("employeesTableBody");
+  tbody.innerHTML = "";
+  if(employees.length === 0){
+    tbody.innerHTML = `<tr class="empty-row"><td colspan="4">لا يوجد موظفون بعد</td></tr>`;
+    return;
+  }
+  employees.forEach((e, idx) => {
+    if(editingEmpIndex === idx){
+      tbody.innerHTML += `
+        <tr>
+          <td data-label="رقم الموظف"><input class="edit-input" type="text" id="editEmpNo_${idx}" value="${e.empNo}"></td>
+          <td data-label="اسم الموظف"><input class="edit-input" type="text" id="editEmpName_${idx}" value="${e.name}"></td>
+          <td data-label="الايميل الرسمي"><input class="edit-input" type="email" id="editEmpEmail_${idx}" value="${e.email || ""}"></td>
+          <td data-label="إجراء">
+            <div class="row-action-btns">
+              <button class="btn-secondary" style="padding:6px 14px;font-size:12px;" onclick="saveEmployeeEdit(${idx})">حفظ</button>
+              <button class="btn-danger" onclick="cancelEmployeeEdit()">إلغاء</button>
+            </div>
+          </td>
+        </tr>`;
+    } else {
+      tbody.innerHTML += `
+        <tr>
+          <td data-label="رقم الموظف">${e.empNo}</td>
+          <td data-label="اسم الموظف">${e.name}</td>
+          <td data-label="الايميل الرسمي">${e.email || "-"}</td>
+          <td data-label="إجراء">
+            <div class="row-action-btns">
+              <button class="btn-secondary" style="padding:6px 14px;font-size:12px;" onclick="editEmployee(${idx})">تعديل</button>
+              <button class="btn-danger" onclick="deleteEmployee('${e.empNo}')">حذف</button>
+            </div>
+          </td>
+        </tr>`;
+    }
+  });
+}
+
+/* ===================== Admin: issue types & categories management ===================== */
+function populateCategoryList(){
+  const dl = document.getElementById("categoryList");
+  dl.innerHTML = "";
+  categories.forEach(c => {
+    const opt = document.createElement("option");
+    opt.value = c;
+    dl.appendChild(opt);
+  });
+}
+function addIssueType(){
+  const name = document.getElementById("newIssueName").value.trim();
+  const category = document.getElementById("newIssueCategory").value.trim();
+  const solution = document.getElementById("newIssueSolution").value.trim();
+  if(!name){
+    alert("الرجاء إدخال نوع المشكلة");
+    return;
+  }
+  if(!category){
+    alert("الرجاء إدخال أو اختيار التصنيف");
+    return;
+  }
+  if(!categories.includes(category)){
+    categories.push(category);
+    populateCategoryList();
+  }
+  issueTypes.push({ name, category, solution });
+  document.getElementById("newIssueName").value = "";
+  document.getElementById("newIssueCategory").value = "";
+  document.getElementById("newIssueSolution").value = "";
+  renderIssueTypesTable();
+}
+function deleteIssueType(index){
+  if(!confirm("هل تريد حذف نوع المشكلة هذا؟")) return;
+  issueTypes.splice(index, 1);
+  renderIssueTypesTable();
+}
+function renderIssueTypesTable(){
+  const tbody = document.getElementById("issueTypesTableBody");
+  tbody.innerHTML = "";
+  if(issueTypes.length === 0){
+    tbody.innerHTML = `<tr class="empty-row"><td colspan="4">لا توجد أنواع مشاكل بعد</td></tr>`;
+    return;
+  }
+  issueTypes.forEach((it, idx) => {
+    tbody.innerHTML += `
+      <tr>
+        <td data-label="نوع المشكلة">${it.name}</td>
+        <td data-label="التصنيف">${it.category}</td>
+        <td data-label="الحل">${it.solution || "-"}</td>
+        <td data-label="حذف"><button class="btn-danger" onclick="deleteIssueType(${idx})">حذف</button></td>
+      </tr>`;
+  });
+}
+
+/* ===================== Tables: requests ===================== */
+function renderMyRequests(){
+  const tbody = document.getElementById("myReqTableBody");
+  const mine = requests.filter(r => r.empNo === currentEmployee.empNo);
+  tbody.innerHTML = "";
+  if(mine.length === 0){
+    tbody.innerHTML = `<tr class="empty-row"><td colspan="6">لا توجد طلبات بعد</td></tr>`;
+    return;
+  }
+  mine.forEach(r => {
+    tbody.innerHTML += `
+      <tr>
+        <td data-label="الرقم الوظيفي">${r.empNo}</td>
+        <td data-label="اسم الموظف">${r.empName}</td>
+        <td data-label="الايميل الرسمي">${r.email || "-"}</td>
+        <td data-label="تفاصيل الخدمة">${r.service}</td>
+        <td data-label="الاجراء المتخذ">${r.action}</td>
+        <td data-label="الحالة">${statusBadge(r.status)}</td>
+      </tr>`;
+  });
+}
+
+function statusBadge(status){
+  let cls = "pending";
+  if(status === "منجز") cls = "done";
+  else if(status === "حفظ") cls = "saved";
+  return `<span class="badge ${cls}">${status}</span>`;
+}
+
+function renderAdminTable(){
+  const tbody = document.getElementById("adminTableBody");
+  const from = document.getElementById("filterFrom").value;
+  const to = document.getElementById("filterTo").value;
+  let list = requests.slice();
+  if(from) list = list.filter(r => r.date >= from);
+  if(to) list = list.filter(r => r.date <= to);
+
+  tbody.innerHTML = "";
+  if(list.length === 0){
+    tbody.innerHTML = `<tr class="empty-row"><td colspan="6">لا توجد طلبات ضمن الفترة المحددة</td></tr>`;
+    return;
+  }
+  list.forEach((r) => {
+    const realIndex = requests.indexOf(r);
+    const actionOptions = ACTION_OPTIONS.map(o =>
+      `<option value="${o}" ${r.action===o?"selected":""}>${o}</option>`
+    ).join("");
+    const statusOptions = STATUS_OPTIONS.map(s =>
+      `<option value="${s}" ${r.status===s?"selected":""}>${s}</option>`
+    ).join("");
+    tbody.innerHTML += `
+      <tr>
+        <td data-label="الرقم الوظيفي">${r.empNo}</td>
+        <td data-label="اسم الموظف">${r.empName}</td>
+        <td data-label="الايميل الرسمي">${r.email || "-"}</td>
+        <td data-label="تفاصيل الخدمة">${r.service}</td>
+        <td data-label="الاجراء المتخذ">
+          <select class="status-select" onchange="updateAction(${realIndex}, this.value)">
+            ${actionOptions}
+          </select>
+        </td>
+        <td data-label="الحالة">
+          <select class="mini-select" onchange="updateStatus(${realIndex}, this.value)">
+            ${statusOptions}
+          </select>
+        </td>
+      </tr>`;
+  });
+}
+function updateAction(index, value){
+  requests[index].action = value;
+  if(value === "منجز"){
+    requests[index].status = "منجز";
+  }
+  renderAdminTable();
+}
+function updateStatus(index, value){
+  requests[index].status = value;
+  renderAdminTable();
+}
+document.addEventListener("input", (e)=>{
+  if(e.target.id === "filterFrom" || e.target.id === "filterTo"){
+    renderAdminTable();
+  }
+});
+
+function printRequests(){
+  window.print();
+}
+
+/* ===================== Init ===================== */
+tickClock();
+showLogin();
+</script>
+
+</body>
+</html>
